@@ -12,7 +12,9 @@ angular.module('orb.controllers', [])
                     Authorization: 'apikey token=' + $scope.apikey
                 }
             }).success(function (data) {
-                $scope.results = data;
+                $scope.results = data.filter(function (item) {
+                    return item.creator === 'http://data.bioontology.org/users/phenoscape';
+                });
             });
             
         }
