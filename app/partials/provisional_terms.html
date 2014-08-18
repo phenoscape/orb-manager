@@ -20,7 +20,7 @@
                 <form ng-show="term.editable" ng-submit="updatePermanentID()" ng-controller="ORBController">
                     <input ng-model="permanentID" type="url">
                 </form>
-                <a ng-hide="term.permanentId === null" href="{{ term.permanentId }}">{{ term.permanentId }}</a>
+                <a ng-hide="term.permanentId === null || term.editable === true" href="{{ term.permanentId }}">{{ term.permanentId }}</a>
                 <button ng-click="term.editable = true" ng-show="!term.editable" type="button">Update</button>
             </td>
         </tr>
