@@ -1,0 +1,28 @@
+<label for="apikey">Enter BioPortal API key:<input type="text" name="apikey" ng-model="apikey" ng-change="loadAllTerms();">
+<table class="table" ng-show="results.length">
+    <thead>
+        <tr>
+            <th>Submitted</th>
+            <th>Provisional IRI</th>
+            <th>Label</th>
+            <th>Description</th>
+            <th>Parent</th>
+            <th>Permanent IRI</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="term in results">
+            <td>{{ term.created }}</td>
+            <td>{{ term["@id"] }}</td>
+            <td>{{ term.label }}</td>
+            <td>{{ term.definition }}</td>
+            <td><a href="{{ term.subclassOf }}">{{ term.subclassOf }}</a></td>
+            <td>
+                <form ng-show="term.editable" ng-submit="updatePermanentID()" ng-controller="ORBController">
+                    <input ng-model="permanentID" type="url">
+                </form>
+                <a ng-hide="term.permanentId === null" href="{{ term.permanentId }}">{{ term.permanentId }}</a>
+                <button ng-click="term.editable = true" ng-show="!term.editable" type="button">Update</button>
+            </td>
+        </tr>
+</tbody>
+</table>
