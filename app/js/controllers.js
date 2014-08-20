@@ -7,14 +7,12 @@ angular.module('orb.controllers', [])
     .controller('ORBController', function($scope, $http) {
 
         $scope.loadAllTerms = function () {
-            $http.get('http://data.bioontology.org/provisional_classes', {
+            $http.get('http://data.bioontology.org/users/phenoscape/provisional_classes', {
                 headers: {
                     Authorization: 'apikey token=' + $scope.apikey
                 }
             }).success(function (data) {
-                $scope.results = data.filter(function (item) {
-                    return item.creator === 'http://data.bioontology.org/users/phenoscape';
-                });
+                $scope.results = data;
             });
             
         }
