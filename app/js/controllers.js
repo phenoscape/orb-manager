@@ -7,11 +7,8 @@ angular.module('orb.controllers', [])
     .controller('ORBController', function($scope, $http) {
 
         $scope.loadAllTerms = function () {
-            $http.get('http://data.bioontology.org/users/phenoscape/provisional_classes', {
-                headers: {
-                    Authorization: 'apikey token=' + $scope.apikey
-                }
-            }).success(function (data) {
+            $http.get('http://data.bioontology.org/users/phenoscape/provisional_classes?apikey=' + $scope.apikey, {}
+            ).success(function (data) {
                 $scope.results = data;
             });
             
