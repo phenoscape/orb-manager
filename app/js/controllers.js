@@ -9,7 +9,8 @@ angular.module('orb.controllers', [])
         $scope.loadAllTerms = function () {
             $http.get('http://data.bioontology.org/users/phenoscape/provisional_classes?apikey=' + $scope.apikey, {}
             ).success(function (data) {
-                $scope.results = data;
+                $scope.allTerms = data;
+                $scope.updateFilteredTerms();
             });
             
         }
@@ -24,7 +25,20 @@ angular.module('orb.controllers', [])
                 angular.copy(data, term);
             });
         }
-
+        
+        $scope.updateFilteredTerms = function () {
+            $scope.results = filterTerms($scope.allTerms); 
+        }
+        
+        function filterTerms(terms) {
+            return terms.filter(function (term) {
+                if ($scope.unresolvedOnly) {
+                    return term.permanentId === null;
+                } else {
+                    return true;
+                }
+            });
+        }
 
         $scope.updatePermanentID = function() {
             $http({

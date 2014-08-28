@@ -1,5 +1,17 @@
-<label for="apikey">Enter BioPortal API key:<input type="text" name="apikey" ng-model="apikey" ng-change="loadAllTerms();">
-<table class="table" ng-show="results.length">
+<form ng-submit="loadAllTerms()" class="form-inline">
+    <div class="form-group">
+    <label for="apikey">Enter BioPortal API key to retrieve terms:</label> <input size="40" type="text" name="apikey" ng-model="apikey">
+        <input type="submit" value="Submit" class="btn">
+    </div>
+</form>
+<form class="form-inline">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="unresolved_selection" ng-model="unresolvedOnly" ng-change="updateFilteredTerms();"> <span class="text-primary">View unresolved terms only</span>
+        </label> 
+    </div>
+</form>
+<table class="table table-striped table-condensed" ng-show="results.length">
     <thead>
         <tr>
             <th>Submitted</th>
@@ -17,11 +29,11 @@
             <td>{{ term.definition }}</td>
             <td><a href="{{ term.subclassOf }}">{{ term.subclassOf }}</a></td>
             <td>
-                <form ng-show="term.editable" ng-submit="updatePermanentID()" ng-controller="ORBController">
+                <form ng-show="term.editable" ng-submit="updatePermanentID()">
                     <input ng-model="permanentID" type="url">
                 </form>
                 <a ng-hide="term.permanentId === null || term.editable === true" href="{{ term.permanentId }}">{{ term.permanentId }}</a>
-                <button ng-click="term.editable = true" ng-show="!term.editable" type="button">Update</button>
+                <button class="btn btn-xs" ng-click="term.editable = true" ng-show="!term.editable" type="button">Update</button>
             </td>
         </tr>
 </tbody>

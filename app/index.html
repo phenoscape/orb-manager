@@ -4,13 +4,13 @@
 	<meta charset="utf-8">
 	<title>Phenoscape ORB Manager</title>
 	<link rel="stylesheet" href="css/app.css"/>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<div ng-controller="AppController">
-	<h1>Phenoscape ORB Manager</h1>
-	<div ng-view></div>
+	<h1>Phenoscape ORB Manager <small>List requested provisional terms. Update with permanent IRIs.</small></h1>
+	<div class="container-fluid" ng-view></div>
 
 	<!-- In production use:
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
