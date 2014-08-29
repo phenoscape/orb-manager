@@ -26,7 +26,7 @@
             <td>{{ term.created }}</td>
             <td>{{ term["@id"] }}</td>
             <td>{{ term.label }}</td>
-            <td>{{ term.definition }}</td>
+            <td>{{ term.definition.join("\n") }}</td>
             <td><a href="{{ term.subclassOf }}">{{ term.subclassOf }}</a></td>
             <td>
                 <form ng-show="term.editable" ng-submit="updatePermanentID()">
