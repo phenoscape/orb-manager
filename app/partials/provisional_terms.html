@@ -29,7 +29,7 @@
             <td>{{ term.definition.join("\n") }}</td>
             <td><a href="{{ term.subclassOf }}">{{ term.subclassOf }}</a></td>
             <td>
-                <form ng-show="term.editable" ng-submit="updatePermanentID()">
+                <form ng-show="term.editable" ng-submit="updatePermanentID()" ng-controller="ORBController">
                     <input ng-model="permanentID" type="url">
                 </form>
                 <a ng-hide="term.permanentId === null || term.editable === true" href="{{ term.permanentId }}">{{ term.permanentId }}</a>
