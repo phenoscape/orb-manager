@@ -9,6 +9,10 @@ angular.module('orb.controllers', [])
         $scope.loadAllTerms = function () {
             $http.get('http://data.bioontology.org/users/phenoscape/provisional_classes?apikey=' + $scope.apikey, {}
             ).success(function (data) {
+                data.sort(function (a, b) {
+                    return b.created.localeCompare(a.created)
+                });
+                
                 $scope.allTerms = data;
                 $scope.updateFilteredTerms();
             });
